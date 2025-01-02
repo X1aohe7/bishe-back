@@ -2,6 +2,10 @@ package com.it.common.entity;
 
 
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -11,9 +15,10 @@ import java.util.List;
  * 护理人员信息
  */
 @Data
+@TableName("nursing")
 public class Nursing {
-
-    private Integer nid;
+    @TableId(type = IdType.AUTO)
+    private Integer nursingId;
     /**
      * 护理人员名称
      */
@@ -46,11 +51,11 @@ public class Nursing {
      */
     private Integer followed;
 //
-//    @TableField(exist = false)
+    @TableField(exist = false)
     private String query;
 
 
-//    @TableField(exist = false)
+    @TableField(exist = false)
     private List<Skill> skillList=new ArrayList<>();
 
 
@@ -60,4 +65,7 @@ public class Nursing {
         }
     }
 
+    public Integer getNursingId() {
+        return nursingId;
+    }
 }

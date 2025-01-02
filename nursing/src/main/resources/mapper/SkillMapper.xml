@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.it.nursing.mapper.SkillMapper">
+
+    <resultMap id="SkillResultMap" type="com.it.common.entity.Skill">
+
+        <result property="skillName" column="skill_name"></result>
+    </resultMap>
+    <select id="getSkill" resultMap="SkillResultMap" parameterType="int">
+        select skill.* from skill,nursing_skill where skill.skill_id=nursing_skill.skill_id and nursing_skill.nursing_id=${nid}
+    </select>
+
+</mapper>

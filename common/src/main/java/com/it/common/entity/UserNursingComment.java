@@ -1,6 +1,9 @@
 package com.it.common.entity;
 
 //import com.fasterxml.jackson.annotation.JsonFormat;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.util.Date;
@@ -10,19 +13,21 @@ import java.util.Date;
  */
 
 @Data
+@TableName("user_nursing_comment")
 public class UserNursingComment {
 
-    private Integer id;
+    @TableId(type = IdType.AUTO)
+    private Integer commentId;
 
     /**
      * 用户id
      */
-    private Integer uid;
+    private Integer userId;
 
     /**
      * 护理人员id
      */
-    private Integer nid;
+    private Integer nursingId;
 
     /**
      * 评价内容

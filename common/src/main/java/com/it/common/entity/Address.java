@@ -1,15 +1,20 @@
 package com.it.common.entity;
 
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
  * 地址表
  */
-@Data
-public class Address {
 
-    private Integer id;
+@Data
+@TableName("address") // 对应数据库中的表名
+public class Address {
+    @TableId(type = IdType.AUTO)
+    private Integer addressId;
 
     private String name;
 
@@ -17,5 +22,5 @@ public class Address {
 
     private String phone;
 
-    private Integer uid;
+    private Integer userId;
 }

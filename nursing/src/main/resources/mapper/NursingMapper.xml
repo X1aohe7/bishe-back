@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.it.nursing.mapper.NursingMapper">
+
+    <resultMap id="NursingResultMap" type="com.it.common.entity.Nursing">
+        <result property="employmentTime" column="employment_time"></result>
+        <result property="nurseName" column="nurse_name"></result>
+    </resultMap>
+
+<!--    <resultMap id="commentResultMap" type="java.util.HashMap">-->
+<!--        <result column="username"  javaType="java.lang.String"/>-->
+<!--        <result column="comment"  javaType="java.lang.String"/>-->
+<!--        <result column="star"  javaType="java.lang.String"/>-->
+<!--        <result column="time"  javaType="java.util.Date"/>-->
+<!--    </resultMap>-->
+
+    <select id="findAll" resultMap="NursingResultMap">
+        select * from nursing
+    </select>
+    <select id="findByCondition" resultType="com.it.common.entity.Nursing" resultMap="NursingResultMap">
+        select * from nursing where introduction LIKE CONCAT('%', #{query}, '%')
+    </select>
+
+    <select id="getNurseBySkill" resultType="com.it.common.entity.Nursing" resultMap="NursingResultMap">
+        select nursing.* from nursing,skill,nursing_skill
+        where nursing_skill.sid=skill.sid
+          and nursing_skill.nid=nursing.nid
+          and skill.skill_name LIKE CONCAT('%', #{query}, '%')
+
+    </select>
+
+    <select id="conditionSearch" resultType="com.it.common.entity.Nursing" resultMap="NursingResultMap">
+        SELECT DISTINCT
+            nursing.*
+        FROM
+            nursing
+                LEFT JOIN nursing_skill ON nursing.nid = nursing_skill.nid
+                LEFT JOIN skill ON nursing_skill.sid = skill.sid
+        WHERE
+            nursing.introduction LIKE concat('%',#{query},'%')
+           OR skill.skill_name LIKE concat('%',#{query},'%')
+            or nursing.nurse_name LIKE concat('%',#{query},'%')
+        ORDER BY
+            nursing.nid
+        LIMIT #{pageNum},#{pageSize}
+
+    </select>
+
+
+    <select id="getCount" resultType="java.lang.Integer" >
+
+        SELECT count(distinct nursing.nid)
+        FROM nursing
+                 LEFT JOIN nursing_skill ON nursing.nid = nursing_skill.nid
+                 LEFT JOIN skill ON nursing_skill.sid = skill.sid
+        WHERE nursing.introduction LIKE concat('%',#{query},'%')
+           OR skill.skill_name LIKE concat('%',#{query},'%')
+           or nursing.nurse_name LIKE concat('%',#{query},'%')
+
+
+
+    </select>
+    <select id="findNurseById" resultMap="NursingResultMap">
+        select *
+        from nursing
+        where nid=#{id}
+    </select>
+
+        <select id="findNurseCommentById" resultType="com.it.common.entity.UserNursingComment">
+            select user.name userName,user_nursing_comment.comment comment,
+            user_nursing_comment.star star,user_nursing_comment.time time
+            from user,user_nursing_comment
+            where user.uid=user_nursing_comment.uid
+              and user_nursing_comment.nid=#{id}
+
+
+    </select>
+
+
+</mapper>

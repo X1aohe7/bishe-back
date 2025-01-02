@@ -1,6 +1,9 @@
 package com.it.common.entity;
 
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
@@ -8,10 +11,12 @@ import lombok.Data;
  */
 
 @Data
+@TableName("user_nursing_collect")
 public class UserNursingCollect {
+    @TableId(type = IdType.AUTO)
+    private Integer collectId;
 
+    private Integer userId;
 
-    private Integer uid;
-
-    private Integer nid;
+    private Integer nursingId;
 }

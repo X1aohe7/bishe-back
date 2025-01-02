@@ -1,14 +1,18 @@
 package com.it.common.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
  * 药物
  */
+@TableName("medicine") // 对应数据库中的表名
 @Data
 public class Medicine {
-
-    private Long id;
+    @TableId(type = IdType.AUTO)
+    private Long medicineId;
 
     private String name;
 
