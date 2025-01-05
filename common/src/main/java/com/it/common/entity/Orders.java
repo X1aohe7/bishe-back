@@ -19,9 +19,9 @@ public class Orders {
 
     private Date time;
 
-    private Integer uid;
+    private Integer userId;
 
-    private Integer nid;
+    private Integer nursingId;
 
     private String nurName;
 

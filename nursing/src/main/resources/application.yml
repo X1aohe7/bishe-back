@@ -20,5 +20,5 @@ eureka:
     prefer-ip-address: true  # 避免使用主机名
     instance-id: ${spring.application.name}:${server.port}
 server:
-  port: 8081
+  port: 8083
 

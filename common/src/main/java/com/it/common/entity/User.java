@@ -18,5 +18,5 @@ public class User {
     private String password;
     private String name;
     private String age;
-    private Integer nid;
+    private Integer nursingId;
 }

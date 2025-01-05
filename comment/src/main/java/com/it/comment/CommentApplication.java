@@ -1,4 +1,4 @@
-package com.it.collect;
+package com.it.comment;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,10 +9,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 // 优质的 spring/boot/data/security/cloud 框架中文文档尽在 => https://springdoc.cn
 @SpringBootApplication
 @EnableFeignClients
-public class CollectApplication {
+public class CommentApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CollectApplication.class, args);
+        SpringApplication.run(CommentApplication.class, args);
     }
 
 }

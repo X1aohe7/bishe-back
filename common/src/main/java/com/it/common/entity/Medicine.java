@@ -39,7 +39,7 @@ public class Medicine {
     /**
      * 用户id
      */
-    private Long uid;
+    private Long userId;
 
 
 
