@@ -26,8 +26,8 @@
 
     <select id="getNurseBySkill" resultType="com.it.common.entity.Nursing" resultMap="NursingResultMap">
         select nursing.* from nursing,skill,nursing_skill
-        where nursing_skill.sid=skill.sid
-          and nursing_skill.nid=nursing.nid
+        where nursing_skill.skill_id=skill.skill_id
+          and nursing_skill.nursing_id=nursing.nursing_id
           and skill.skill_name LIKE CONCAT('%', #{query}, '%')
 
     </select>
@@ -37,14 +37,14 @@
             nursing.*
         FROM
             nursing
-                LEFT JOIN nursing_skill ON nursing.nid = nursing_skill.nid
-                LEFT JOIN skill ON nursing_skill.sid = skill.sid
+                LEFT JOIN nursing_skill ON nursing.nursing_id = nursing_skill.nursing_id
+                LEFT JOIN skill ON nursing_skill.skill_id = skill.skill_id
         WHERE
             nursing.introduction LIKE concat('%',#{query},'%')
            OR skill.skill_name LIKE concat('%',#{query},'%')
             or nursing.nurse_name LIKE concat('%',#{query},'%')
         ORDER BY
-            nursing.nid
+            nursing.nursing_id
         LIMIT #{pageNum},#{pageSize}
 
     </select>
@@ -52,10 +52,10 @@
 
     <select id="getCount" resultType="java.lang.Integer" >
 
-        SELECT count(distinct nursing.nid)
+        SELECT count(distinct nursing.nursing_id)
         FROM nursing
-                 LEFT JOIN nursing_skill ON nursing.nid = nursing_skill.nid
-                 LEFT JOIN skill ON nursing_skill.sid = skill.sid
+                 LEFT JOIN nursing_skill ON nursing.nursing_id = nursing_skill.nursing_id
+                 LEFT JOIN skill ON nursing_skill.skill_id = skill.skill_id
         WHERE nursing.introduction LIKE concat('%',#{query},'%')
            OR skill.skill_name LIKE concat('%',#{query},'%')
            or nursing.nurse_name LIKE concat('%',#{query},'%')
@@ -66,15 +66,15 @@
     <select id="findNurseById" resultMap="NursingResultMap">
         select *
         from nursing
-        where nid=#{id}
+        where nursing_id=#{id}
     </select>
 
         <select id="findNurseCommentById" resultType="com.it.common.entity.UserNursingComment">
             select user.name userName,user_nursing_comment.comment comment,
             user_nursing_comment.star star,user_nursing_comment.time time
             from user,user_nursing_comment
-            where user.uid=user_nursing_comment.uid
-              and user_nursing_comment.nid=#{id}
+            where user.user_id=user_nursing_comment.user_id
+              and user_nursing_comment.nursing_id=#{id}
 
 
     </select>

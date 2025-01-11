@@ -2,6 +2,7 @@ package com.it.common.entity;
 
 //import com.fasterxml.jackson.annotation.JsonFormat;
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -45,6 +46,6 @@ public class UserNursingComment {
 //    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date time;
 
-//    @TableField(exist = false)
-    private String userName;
+    @TableField(exist = false)
+    private String username;
 }

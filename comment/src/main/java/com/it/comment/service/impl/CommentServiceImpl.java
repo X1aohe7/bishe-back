@@ -31,8 +31,8 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, UserNursingCo
         List<UserNursingComment> userNursingComments = commentMapper.selectList(queryWrapper);
         userNursingComments.forEach(userNursingComment -> {
             User user = userClient.getUserById(Long.valueOf(userNursingComment.getUserId()));
-            userNursingComment.setUserName(user.getName());
-            System.out.println(userNursingComment.getUserName());
+            userNursingComment.setUsername(user.getName());
+            System.out.println(userNursingComment.getUsername());
         });
         return userNursingComments;
     }
@@ -46,8 +46,8 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, UserNursingCo
 
         userNursingComments.forEach(userNursingComment -> {
             User user = userClient.getUserById(Long.valueOf(userNursingComment.getUserId()));
-            userNursingComment.setUserName(user.getName());
-            System.out.println(userNursingComment.getUserName());
+            userNursingComment.setUsername(user.getName());
+            System.out.println(userNursingComment.getUsername());
         });
         return userNursingComments;
     }

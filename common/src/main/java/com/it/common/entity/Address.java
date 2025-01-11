@@ -16,9 +16,11 @@ public class Address {
     @TableId(type = IdType.AUTO)
     private Integer addressId;
 
-    private String name;
+    private String position;
 
-    private String linkman;
+    private String detail;
+
+    private String name;
 
     private String phone;
 

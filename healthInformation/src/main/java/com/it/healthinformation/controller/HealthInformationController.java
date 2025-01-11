@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/healthInformation")
+//@RequestMapping("/healthInformation")
 public class HealthInformationController {
     @Autowired
     private HealthInformationService healthInformationService;

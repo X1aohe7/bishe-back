@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(name = "nursing") // 修改为实际的服务地址
 public interface NursingServiceClient {
-    @GetMapping("/nurse/getNurseById")
+    @GetMapping("/getNurseById")
     Nursing getNurseById(@RequestParam("id")Integer id);
 }
