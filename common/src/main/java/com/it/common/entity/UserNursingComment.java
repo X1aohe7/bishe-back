@@ -48,4 +48,6 @@ public class UserNursingComment {
 
     @TableField(exist = false)
     private String username;
+
+    private String ordersId;
 }

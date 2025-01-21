@@ -9,4 +9,6 @@ public interface CommentService extends IService<UserNursingComment> {
     List<UserNursingComment> getCommentByNursingId(Integer nursingId);
 
     List<UserNursingComment> getProfileByNursingId(Integer nursingId);
+
+    UserNursingComment getCommentByOrdersId(String ordersId);
 }

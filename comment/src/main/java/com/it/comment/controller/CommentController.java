@@ -9,6 +9,7 @@ import com.it.common.entity.User;
 import com.it.common.entity.UserNursingComment;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,11 +19,6 @@ import java.util.List;
 //@RequestMapping("/comment")
 public class CommentController {
 
-//    @Autowired
-//    private CommentMapper commentMapper;
-//
-//    @Autowired
-//    private UserMapper userMapper;
     @Autowired
     private CommentService commentService;
 
@@ -66,6 +62,17 @@ public class CommentController {
         List<UserNursingComment> userNursingComments = commentService.getProfileByNursingId(nid);
 
         return ResponseEntity.ok(userNursingComments);
+    }
+
+    @GetMapping("/getCommentByOrdersId")
+    public ResponseEntity<UserNursingComment> getCommentByOrdersId(@RequestParam String ordersId) {
+
+        UserNursingComment comment = commentService.getCommentByOrdersId(ordersId);
+        if (comment != null) {
+            return ResponseEntity.ok(comment); // 返回查询结果
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); // 如果未找到，返回 404
+        }
     }
 
 }

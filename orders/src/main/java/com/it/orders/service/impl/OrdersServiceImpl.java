@@ -38,7 +38,7 @@ public class OrdersServiceImpl implements OrdersService {
     }
 
     @Override
-    public Orders getOrdersByUserId(String id) {
+    public Orders getOrdersById(String id) {
         Orders orders = ordersMapper.selectById(id);
         return orders;
     }
@@ -56,10 +56,13 @@ public class OrdersServiceImpl implements OrdersService {
         LambdaQueryWrapper<Orders> orderLambdaQueryWrapper = Wrappers.lambdaQuery(Orders.class);
         orderLambdaQueryWrapper.eq(Orders::getNursingId, nursingId);
         List<Orders> orders = ordersMapper.selectList(orderLambdaQueryWrapper);
-        for(Orders order : orders) {
-            User user = userClient.getUserById(Long.valueOf(order.getUserId()));
-            order.setName(user.getName());
-        }
+//        for(Orders order : orders) {
+//            User user = userClient.getUserById(Long.valueOf(order.getUserId()));
+//            order.setName(user.getName());
+//        }
         return orders;
     }
+
+
+
 }

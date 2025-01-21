@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RequestMapping("/order")
+//@RequestMapping("/order")
 @RestController
 public class OrdersController {
 
@@ -38,7 +38,7 @@ public class OrdersController {
     @GetMapping("/get")
     public ResponseEntity<Orders> getByOrdersid(@RequestParam String id) {
 //        Order order = orderMapper.selectById(id);
-        Orders orders = ordersService.getOrdersByUserId(id);
+        Orders orders = ordersService.getOrdersById(id);
         return ResponseEntity.ok(orders);
     }
 
@@ -50,6 +50,7 @@ public class OrdersController {
         List<Orders> orders = ordersService.getAllOrdersByUserId(uid);
         return ResponseEntity.ok(orders);
     }
+
 
     /**
      * 查询护工订单

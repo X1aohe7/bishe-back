@@ -51,4 +51,13 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, UserNursingCo
         });
         return userNursingComments;
     }
+
+    @Override
+    public UserNursingComment getCommentByOrdersId(String ordersId) {
+        LambdaQueryWrapper<UserNursingComment> queryWrapper =
+                Wrappers.lambdaQuery(UserNursingComment.class);
+        queryWrapper.eq(UserNursingComment::getOrdersId, ordersId);
+        UserNursingComment userNursingComment = commentMapper.selectOne(queryWrapper);
+        return userNursingComment;
+    }
 }
