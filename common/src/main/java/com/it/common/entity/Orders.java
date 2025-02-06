@@ -29,4 +29,5 @@ public class Orders {
     private String remark;
 
     private Double price;
+    
 }
