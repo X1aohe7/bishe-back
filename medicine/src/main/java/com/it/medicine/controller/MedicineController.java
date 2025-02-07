@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/medicine")
+//@RequestMapping("/medicine")
 @RestController
 public class MedicineController {
 
@@ -42,6 +42,7 @@ public class MedicineController {
 
     @PostMapping("/remove")
     public ResponseEntity<String> remove(@RequestParam Long id) {
+
         medicineService.deleteMedicine(id);
         return ResponseEntity.ok("成功");
     }

@@ -1,9 +1,15 @@
 package com.it.common.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+
+import java.util.Date;
+import java.util.List;
 
 /**
  * 药物
@@ -27,9 +33,10 @@ public class Medicine {
     private String everyday;
 
     /**
-     * 提醒时间逗号隔开
+     * 提醒时间
      */
-    private String time;
+    @TableField(exist = false)
+    private List<String> reminderTime;
 
     /**
      * 用药时长
@@ -40,6 +47,13 @@ public class Medicine {
      * 用户id
      */
     private Long userId;
+
+    /**
+     * 创建时间
+     */
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createdTime;
 
 
 
